@@ -62,7 +62,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Character.cs" />
+    <Compile Include="Assets\Scripts\Character\CharacterAnimator.cs" />
+    <Compile Include="Assets\Scripts\Character\CharacterController.cs" />
+    <Compile Include="Assets\Scripts\Character\CharacterCore.cs" />
+    <Compile Include="Assets\Scripts\Character\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\UI\Menu.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/My Game/Mysterious Quest/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
