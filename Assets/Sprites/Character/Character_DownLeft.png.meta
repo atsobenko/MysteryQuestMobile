@@ -1,7 +1,19 @@
 fileFormatVersion: 2
 guid: 31b0343a587d8014c95b7dc147563b3f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 991693094921136743
+    second: Character_DownLeft_0
+  - first:
+      213: -6908966582107737514
+    second: Character_DownLeft_1
+  - first:
+      213: -5471775156991403144
+    second: Character_DownLeft_2
+  - first:
+      213: -489865656717621383
+    second: Character_DownLeft_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -96,7 +108,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Character_DownLeft_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 5
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c04b1ebab532f04a9df64a0bd12e59a
+      internalID: 991693094921136743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_DownLeft_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 5
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48777d94c9e269848848422b3e3698b0
+      internalID: -6908966582107737514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_DownLeft_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 5
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99249eef1e5605f4d88c3f51ddd914fd
+      internalID: -5471775156991403144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_DownLeft_3
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 5
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d9fb7c6e68caec41a1dcd61cf533896
+      internalID: -489865656717621383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

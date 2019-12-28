@@ -20,18 +20,35 @@ public class CharacterAnimator : CharacterCore
 
     protected void SetAnimation()
     {
-        if (Input.GetButton("Horizontal"))
-            animator.Play("Run Horizontal");
-        else if (Input.GetAxis("Vertical") > 0)
-            animator.Play("Run Up");
-        else if (Input.GetAxis("Vertical") < 0)
-            animator.Play("Run Horizontal");
-        else
-            animator.Play("Idle");
+        if (Input.GetAxis("Vertical") > 0)
+        {
+            animator.ResetTrigger("Stay");
 
-        if (Input.GetAxis("Horizontal") < 0)
-            spriteRenderer.flipX = true;
-        else if (Input.GetAxis("Horizontal") > 0)
-            spriteRenderer.flipX = false;
+            if (Input.GetButton("Horizontal"))
+                animator.Play("Run Up-Horizontal");
+            else
+                animator.Play("Run Up");
+        }
+        else
+        if (Input.GetAxis("Vertical") < 0)
+        {
+            animator.ResetTrigger("Stay");
+
+            if (Input.GetButton("Horizontal"))
+                animator.Play("Run Down-Horizontal");
+            else
+                animator.Play("Run Down");
+        }
+        else
+        if (Input.GetButton("Horizontal"))
+        {
+            animator.ResetTrigger("Stay");
+            animator.Play("Run Horizontal");
+        }
+        else
+            animator.SetTrigger("Stay");
+
+        if (Input.GetButton("Horizontal"))
+            spriteRenderer.flipX = Input.GetAxis("Horizontal") < 0;
     }
 }

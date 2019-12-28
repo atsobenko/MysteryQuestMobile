@@ -9,8 +9,10 @@ public class CharacterMovement : CharacterAnimator
 
     protected void Movement()
     {
-        moveDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        moveDirection *= speed;
+        float horizontalAxis = Input.GetAxis("Horizontal") != 0 && Input.GetButton("Horizontal") ? Input.GetAxis("Horizontal") / Mathf.Abs(Input.GetAxis("Horizontal")) : 0;
+        float verticalAxis = Input.GetAxis("Vertical") != 0 && Input.GetButton("Vertical") ? Input.GetAxis("Vertical") / Mathf.Abs(Input.GetAxis("Vertical")) : 0;
+
+        moveDirection = new Vector2(horizontalAxis, verticalAxis) * speed;
 
         rigidBody.velocity = moveDirection * Time.deltaTime;
     }
