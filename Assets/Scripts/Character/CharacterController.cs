@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CharacterController : CharacterMovement
+﻿public class CharacterController : CharacterAnimator
 {
     // Start is called before the first frame update
     void Start()
@@ -13,7 +9,11 @@ public class CharacterController : CharacterMovement
     // Update is called once per frame
     void Update()
     {
-        Movement();
         SetAnimation();
+    }
+
+    void FixedUpdate()
+    {
+        Movement();
     }
 }

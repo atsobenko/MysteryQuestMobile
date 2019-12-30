@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CharacterCore : MonoBehaviour
 {
@@ -10,7 +8,6 @@ public class CharacterCore : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        speed *= 50f;
         rigidBody = GetComponent<Rigidbody2D>();
     }
 }

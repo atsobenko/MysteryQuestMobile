@@ -1,16 +1,9 @@
-﻿using UnityEditor.Animations;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CharacterAnimator : CharacterCore
+public class CharacterAnimator : CharacterMovement
 {
     Animator animator;
     SpriteRenderer spriteRenderer;
-
-    enum states
-    {
-        leftRun,
-        rightRun
-    }
 
     protected virtual void Awake()
     {
@@ -20,33 +13,9 @@ public class CharacterAnimator : CharacterCore
 
     protected void SetAnimation()
     {
-        if (Input.GetAxis("Vertical") > 0)
-        {
-            animator.ResetTrigger("Stay");
-
-            if (Input.GetButton("Horizontal"))
-                animator.Play("Run Up-Horizontal");
-            else
-                animator.Play("Run Up");
-        }
-        else
-        if (Input.GetAxis("Vertical") < 0)
-        {
-            animator.ResetTrigger("Stay");
-
-            if (Input.GetButton("Horizontal"))
-                animator.Play("Run Down-Horizontal");
-            else
-                animator.Play("Run Down");
-        }
-        else
-        if (Input.GetButton("Horizontal"))
-        {
-            animator.ResetTrigger("Stay");
-            animator.Play("Run Horizontal");
-        }
-        else
-            animator.SetTrigger("Stay");
+        animator.SetFloat("Horizontal", moveDirection.x);
+        animator.SetFloat("Vertical", moveDirection.y);
+        animator.SetFloat("Speed", moveDirection.sqrMagnitude);
 
         if (Input.GetButton("Horizontal"))
             spriteRenderer.flipX = Input.GetAxis("Horizontal") < 0;
