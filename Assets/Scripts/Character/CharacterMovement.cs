@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Character
 {
@@ -12,8 +13,8 @@ namespace Character
             var horizontalAxis = Input.GetAxis("Horizontal");
             var verticalAxis = Input.GetAxis("Vertical");
         
-            MoveDirection.x = Input.GetButton("Horizontal") ? horizontalAxis / Mathf.Abs(horizontalAxis) : 0;
-            MoveDirection.y = Input.GetButton("Vertical") ? verticalAxis / Mathf.Abs(verticalAxis) : 0;
+            MoveDirection.x = Math.Abs(horizontalAxis) > 0 && Input.GetButton("Horizontal") ? horizontalAxis / Mathf.Abs(horizontalAxis) : 0;
+            MoveDirection.y = Math.Abs(verticalAxis) > 0 && Input.GetButton("Vertical") ? verticalAxis / Mathf.Abs(verticalAxis) : 0;
 
             RigidBody.MovePosition(RigidBody.position + MoveDirection * (speed * Time.fixedDeltaTime));
         }
