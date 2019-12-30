@@ -1,19 +1,16 @@
-﻿public class CharacterController : CharacterAnimator
+﻿namespace Character
 {
-    // Start is called before the first frame update
-    void Start()
+    public class CharacterController : CharacterAnimator
     {
-        
-    }
+        // Update is called once per frame
+        private void Update()
+        {
+            SetAnimation();
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        SetAnimation();
-    }
-
-    void FixedUpdate()
-    {
-        Movement();
+        private void FixedUpdate()
+        {
+            Movement();
+        }
     }
 }

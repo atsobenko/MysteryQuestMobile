@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 
-public class CharacterCore : MonoBehaviour
+namespace Character
 {
-    protected Rigidbody2D rigidBody;
-
-    public float speed = 5.0f;
-
-    protected virtual void OnEnable()
+    public class CharacterCore : MonoBehaviour
     {
-        rigidBody = GetComponent<Rigidbody2D>();
+        protected Rigidbody2D RigidBody;
+
+        public float speed = 5.0f;
+
+        protected virtual void OnEnable()
+        {
+            RigidBody = GetComponent<Rigidbody2D>();
+        }
     }
 }

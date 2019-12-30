@@ -1,23 +1,31 @@
 ﻿using UnityEngine;
 
-public class CharacterAnimator : CharacterMovement
+namespace Character
 {
-    Animator animator;
-    SpriteRenderer spriteRenderer;
-
-    protected virtual void Awake()
+    public class CharacterAnimator : CharacterMovement
     {
-        animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
+        private Animator _animator;
+        private SpriteRenderer _spriteRenderer;
+        private static readonly int Horizontal = Animator.StringToHash("Horizontal");
+        private static readonly int Vertical = Animator.StringToHash("Vertical");
+        private static readonly int Speed = Animator.StringToHash("Speed");
 
-    protected void SetAnimation()
-    {
-        animator.SetFloat("Horizontal", moveDirection.x);
-        animator.SetFloat("Vertical", moveDirection.y);
-        animator.SetFloat("Speed", moveDirection.sqrMagnitude);
+        protected virtual void Awake()
+        {
+            _animator = GetComponent<Animator>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
 
-        if (Input.GetButton("Horizontal"))
-            spriteRenderer.flipX = Input.GetAxis("Horizontal") < 0;
+        protected void SetAnimation()
+        {
+            _animator.SetFloat(Horizontal, MoveDirection.x);
+            _animator.SetFloat(Vertical, MoveDirection.y);
+            _animator.SetFloat(Speed, MoveDirection.sqrMagnitude);
+
+            if (Input.GetButton("Horizontal"))
+            {
+                _spriteRenderer.flipX = Input.GetAxis("Horizontal") < 0;
+            }
+        }
     }
 }
