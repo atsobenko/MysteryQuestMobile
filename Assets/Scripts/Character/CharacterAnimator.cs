@@ -22,7 +22,7 @@ namespace Character
             _animator.SetFloat(Vertical, MoveDirection.y);
             _animator.SetFloat(Speed, MoveDirection.sqrMagnitude);
 
-            if (Input.GetButton("Horizontal"))
+            if (Input.GetButton("Horizontal") && movementAbility)
             {
                 _spriteRenderer.flipX = Input.GetAxis("Horizontal") < 0;
             }
