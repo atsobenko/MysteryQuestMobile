@@ -1,45 +1,50 @@
-﻿using UnityEngine;
+﻿using Effects;
+using UnityEngine;
 
-public class Teleport : MonoBehaviour
+namespace Objects.Teleport
 {
-    [DraggablePoint] public Vector3 TeleportTo;
-
-    public Blackout blackout;
-
-    private Collider2D _player;
-
-    private bool _whaitIn, _whaitOut = false;
-
-    // Update is called once per frame
-    void Update()
+    public class Teleport : MonoBehaviour
     {
-        TeleportPlayer();
-    }
+        [DraggablePoint] public Vector3 teleportTo;
 
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.tag == "Player")
+        public Blackout blackout;
+
+        private Collider2D _player;
+
+        private bool _whaitIn, _whaitOut;
+
+        // Update is called once per frame
+        void Update()
         {
+            TeleportPlayer();
+        }
+
+        private void OnTriggerEnter2D(Collider2D collider)
+        {
+            if (!collider.CompareTag("Player"))
+            {
+                return;
+            }
             blackout.ForceFadeIn();
             _player = collider;
             _player.SendMessage("ToggleMovementAbility");
             _whaitIn = true;
         }
-    }
 
-    public void TeleportPlayer()
-    {
-        if (_whaitIn && !blackout.IsFadeIn())
+        private void TeleportPlayer()
         {
-            _player.transform.position = TeleportTo;
-            blackout.ForceFadeOut();
-            _whaitIn = false;
-            _whaitOut = true;
-        }
-        else if (_whaitOut && !blackout.IsFadeOut())
-        {
-            _whaitOut = false;
-            _player.SendMessage("ToggleMovementAbility");
+            if (_whaitIn && !blackout.IsFadeIn())
+            {
+                _player.transform.position = teleportTo;
+                blackout.ForceFadeOut();
+                _whaitIn = false;
+                _whaitOut = true;
+            }
+            else if (_whaitOut && !blackout.IsFadeOut())
+            {
+                _whaitOut = false;
+                _player.SendMessage("ToggleMovementAbility");
+            }
         }
     }
 }

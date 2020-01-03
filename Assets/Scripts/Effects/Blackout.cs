@@ -1,52 +1,56 @@
 ﻿using UnityEngine;
 
-public class Blackout : MonoBehaviour
+namespace Effects
 {
-    private Animator animator;
-
-    private bool _isFadeIn, _isFadeOut = false;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Blackout : MonoBehaviour
     {
-        animator = GetComponent<Animator>();
-    }
+        private Animator _animator;
 
-    public bool IsFadeIn()
-    {
-        return _isFadeIn;
-    }
+        private bool _isFadeIn, _isFadeOut;
+        private static readonly int FadeOut = Animator.StringToHash("FadeOut");
 
-    public bool IsFadeOut()
-    {
-        return _isFadeOut;
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+            _animator = GetComponent<Animator>();
+        }
 
-    public void Reload()
-    {
-        _isFadeIn = false;
-        _isFadeOut = false;
-    }
+        public bool IsFadeIn()
+        {
+            return _isFadeIn;
+        }
 
-    public void FadeInEnd()
-    {
-        _isFadeIn = false;
-    }
+        public bool IsFadeOut()
+        {
+            return _isFadeOut;
+        }
 
-    public void FadeOutEnd()
-    {
-        _isFadeOut = false;
-    }
+        public void Reload()
+        {
+            _isFadeIn = false;
+            _isFadeOut = false;
+        }
 
-    public void ForceFadeIn()
-    {
-        animator.Play("FadeIn");
-        _isFadeIn = true;
-    }
+        public void FadeInEnd()
+        {
+            _isFadeIn = false;
+        }
 
-    public void ForceFadeOut()
-    {
-        animator.SetTrigger("FadeOut");
-        _isFadeOut = true;
+        public void FadeOutEnd()
+        {
+            _isFadeOut = false;
+        }
+
+        public void ForceFadeIn()
+        {
+            _animator.Play("FadeIn");
+            _isFadeIn = true;
+        }
+
+        public void ForceFadeOut()
+        {
+            _animator.SetTrigger(FadeOut);
+            _isFadeOut = true;
+        }
     }
 }

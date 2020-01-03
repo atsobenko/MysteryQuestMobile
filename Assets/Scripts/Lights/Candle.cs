@@ -1,24 +1,29 @@
 ﻿using UnityEngine;
 using UnityEngine.Experimental.Rendering.LWRP;
 
-public class Candle : MonoBehaviour
+namespace Lights
 {
-    private Light2D _light;
-    private float _timer;
-    public float delay, minValue, maxValue;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Candle : MonoBehaviour
     {
-        _light = GetComponent<Light2D>();
-        _timer = Time.time;
-    }
+        private Light2D _light;
+        private float _timer;
+        public float delay, minValue, maxValue;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Time.time - _timer >= delay)
+        // Start is called before the first frame update
+        private void Start()
         {
+            _light = GetComponent<Light2D>();
+            _timer = Time.time;
+        }
+
+        // Update is called once per frame
+        private void Update()
+        {
+            if (!(Time.time - _timer >= delay))
+            {
+                return;
+            }
+            
             _timer = Time.time;
             _light.intensity = Random.Range(minValue, maxValue);
         }
