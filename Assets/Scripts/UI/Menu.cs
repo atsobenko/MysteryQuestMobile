@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Menu : MonoBehaviour
+namespace UI
 {
-    public  void MenuFunction() {
-        Time.timeScale = 0;
+    public class Menu : MonoBehaviour
+    {
+        public  void MenuFunction() {
+            Time.timeScale = 0;
+        }
     }
 }
