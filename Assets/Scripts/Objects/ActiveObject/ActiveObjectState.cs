@@ -8,5 +8,6 @@ namespace Objects.ActiveObject
         public string stateDescription;
         public string methodName;
         public Item.Item requiredItem;
+        public bool closingInteraction;
     }
 }

@@ -43,11 +43,11 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 4adf5de734ee66f4996a582ad07c7bf7, type: 3}
-    totalSpriteSurfaceArea: 338588
+    totalSpriteSurfaceArea: 404232
     bindAsDefault: 1
     storedHash:
       serializedVersion: 2
-      Hash: f58ee7feb59a35d6bba758b44ea5fa55
+      Hash: a8331407a1868945e25b38babb5f27ee
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: -8888539960847567148, guid: 66ee41c15f41b8c43b445671c2a34998, type: 3}
@@ -387,6 +387,7 @@ SpriteAtlas:
   - {fileID: -6679811607503405580, guid: 8f7a93a66ddafba4681beed7f479af7e, type: 3}
   - {fileID: -7234817973845761535, guid: 8f7a93a66ddafba4681beed7f479af7e, type: 3}
   - {fileID: -1615456735555669528, guid: 8f7a93a66ddafba4681beed7f479af7e, type: 3}
+  - {fileID: 21300000, guid: 68bde1d89af0b454fb958b38bbcc6742, type: 3}
   - {fileID: 8888480604654806193, guid: f187174969e52d146a1030d36e046898, type: 3}
   - {fileID: 5068305268097238896, guid: f187174969e52d146a1030d36e046898, type: 3}
   - {fileID: -5601474530825834156, guid: f187174969e52d146a1030d36e046898, type: 3}
@@ -395,6 +396,7 @@ SpriteAtlas:
   - {fileID: 991693094921136743, guid: 31b0343a587d8014c95b7dc147563b3f, type: 3}
   - {fileID: -489865656717621383, guid: 31b0343a587d8014c95b7dc147563b3f, type: 3}
   - {fileID: -5471775156991403144, guid: 31b0343a587d8014c95b7dc147563b3f, type: 3}
+  - {fileID: 21300000, guid: 6e718b4c8c54c1c408dafb3eb6724f20, type: 3}
   - {fileID: -3931703431285248119, guid: e5c2f29d305a41644b8ceb3aede0ee28, type: 3}
   - {fileID: -4652366206093635628, guid: e5c2f29d305a41644b8ceb3aede0ee28, type: 3}
   - {fileID: 7129061249253179447, guid: e5c2f29d305a41644b8ceb3aede0ee28, type: 3}
@@ -1698,6 +1700,7 @@ SpriteAtlas:
   - decorative_33
   - decorative_83
   - decorative_93
+  - HUD
   - Character_Up_1
   - Character_Up_0
   - Character_Up_3
@@ -1706,6 +1709,7 @@ SpriteAtlas:
   - Character_DownLeft_0
   - Character_DownLeft_3
   - Character_DownLeft_2
+  - Key
   - Character_Horizontal_2
   - Character_Horizontal_3
   - Character_Horizontal_0

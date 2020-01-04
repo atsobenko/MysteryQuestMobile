@@ -7,6 +7,8 @@ namespace Objects.ActiveObject
     public class ActiveObject : MysteriousQuestObject
     {
         public List<ActiveObjectState> states;
+
+        public HUD hUD;
         
         [SerializeField] protected ActiveObjectState currentState;
         public Item.Item requiredItem;
@@ -23,13 +25,29 @@ namespace Objects.ActiveObject
             {
                 return;
             }
-            Interact();
+
+            hUD.Open(this);
         }
 
-        private void Interact()
+        private void OnTriggerExit2D(Collider2D inputCollider)
+        {
+            if (!inputCollider.CompareTag("Player"))
+            {
+                return;
+            }
+
+            hUD.Close();
+        }
+
+        public void Interact()
         {
             Invoke(currentState.methodName, 0);
             Debug.Log(currentState.stateDescription);
+
+            if (currentState.closingInteraction)
+            {
+                hUD.Close();
+            }
         }
     }
 }
