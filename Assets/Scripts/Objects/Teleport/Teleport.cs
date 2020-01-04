@@ -1,16 +1,16 @@
-﻿using Effects;
+﻿using System.Linq;
+using Character;
+using Effects;
 using UnityEngine;
 
 namespace Objects.Teleport
 {
-    public class Teleport : MonoBehaviour
+    public class Teleport : ActiveObject.ActiveObject
     {
         [DraggablePoint] public Vector3 teleportTo;
 
         public Blackout blackout;
-
-        private Collider2D _player;
-
+        
         private bool _whaitIn, _whaitOut;
 
         // Update is called once per frame
@@ -19,23 +19,27 @@ namespace Objects.Teleport
             TeleportPlayer();
         }
 
-        private void OnTriggerEnter2D(Collider2D collider)
+        private void ClosedInteraction()
         {
-            if (!collider.CompareTag("Player"))
+            if (Player.GetComponent<Inventory>().UseItem(requiredItem))
             {
-                return;
+                currentState = states.First(i => i.stateName == "opened");
             }
+        }
+        
+        private void OpenInteraction()
+        {
             blackout.ForceFadeIn();
-            _player = collider;
-            _player.SendMessage("ToggleMovementAbility");
+            Player.SendMessage("ToggleMovementAbility");
             _whaitIn = true;
         }
+        
 
         private void TeleportPlayer()
         {
             if (_whaitIn && !blackout.IsFadeIn())
             {
-                _player.transform.position = teleportTo;
+                Player.transform.position = teleportTo;
                 blackout.ForceFadeOut();
                 _whaitIn = false;
                 _whaitOut = true;
@@ -43,7 +47,7 @@ namespace Objects.Teleport
             else if (_whaitOut && !blackout.IsFadeOut())
             {
                 _whaitOut = false;
-                _player.SendMessage("ToggleMovementAbility");
+                Player.SendMessage("ToggleMovementAbility");
             }
         }
     }
