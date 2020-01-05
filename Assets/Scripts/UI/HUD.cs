@@ -19,11 +19,11 @@ public class HUD : MonoBehaviour
         
     }
 
-    public void Open(ActiveObject activeObject)
+    public void Open(ActiveObject activeObject, TextWritingSystem writingSystem)
     {
         gameObject.SetActive(true);
         animator.Play("Open");
-        CreateButtons(activeObject);
+        CreateButtons(activeObject, writingSystem);
     }
 
     public void OpenEnded()
@@ -38,7 +38,7 @@ public class HUD : MonoBehaviour
             return;
         }
 
-        animator.Play("Close");
+        animator.SetTrigger("Close");
     }
 
     public void CloseEnded()
@@ -47,12 +47,18 @@ public class HUD : MonoBehaviour
         DestroyButtons();
     }
 
-    private void CreateButtons(ActiveObject activeObject)
+    private void CreateButtons(ActiveObject activeObject, TextWritingSystem writingSystem)
     {
         var newButton = Instantiate(button, transform.position, Quaternion.identity);
         newButton.transform.SetParent(transform, false);
         newButton.GetComponent<Button>().onClick.AddListener(activeObject.Interact);
+        newButton.GetComponent<Button>().onClick.AddListener(delegate { writingSystem.StartWriting(activeObject.currentState.stateDescription); });
         newButton.GetComponentInChildren<Text>().text = "Use";
+
+        newButton = Instantiate(button, transform.position, Quaternion.identity);
+        newButton.transform.SetParent(transform, false);
+        newButton.GetComponent<Button>().onClick.AddListener(delegate { writingSystem.StartWriting(activeObject.currentState.stateDescription); });
+        newButton.GetComponentInChildren<Text>().text = "Look";
     }
 
     private void DestroyButtons()

@@ -10,8 +10,9 @@ namespace Objects.ActiveObject
 
         public HUD hUD;
         
-        [SerializeField] protected ActiveObjectState currentState;
+        [SerializeField] public ActiveObjectState currentState;
         public Item.Item requiredItem;
+        public TextWritingSystem writingSystem;
         protected Collider2D Player;
 
         private void Awake()
@@ -26,7 +27,7 @@ namespace Objects.ActiveObject
                 return;
             }
 
-            hUD.Open(this);
+            hUD.Open(this, writingSystem);
         }
 
         private void OnTriggerExit2D(Collider2D inputCollider)
@@ -42,7 +43,6 @@ namespace Objects.ActiveObject
         public void Interact()
         {
             Invoke(currentState.methodName, 0);
-            Debug.Log(currentState.stateDescription);
 
             if (currentState.closingInteraction)
             {

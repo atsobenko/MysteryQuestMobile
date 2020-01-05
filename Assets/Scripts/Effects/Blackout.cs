@@ -39,10 +39,12 @@ namespace Effects
         public void FadeOutEnd()
         {
             _isFadeOut = false;
+            gameObject.SetActive(false);
         }
 
         public void ForceFadeIn()
         {
+            gameObject.SetActive(true);
             _animator.Play("FadeIn");
             _isFadeIn = true;
         }
